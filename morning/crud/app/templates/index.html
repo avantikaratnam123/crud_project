@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Sign Up | By Code Info</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <h4>It's free and only takes a minute</h4>
+      <form method="POST", action="/registration/">
+        {% csrf_token %}
+        <label>First Name</label>
+        <input type="text" placeholder="" name="name"/>
+        <label>Email</label>
+        <input type="email" placeholder=""name="email" />
+        <label>Date of Birth</label>
+        <input type="date" placeholder="" name="DOB"/>
+        
+        <label>Password</label>
+        <input type="password" placeholder="" name="password"/>
+        <label>Contact number</label>
+        <input type="number" placeholder=""name="contact" />
+        <input type="submit" value="Submit" />
+    </form>
+    {% if messages %}
+											{% for message in messages %}               
+											  <div class=" alert-{{message.tags}} alert-dismissible fade show" role="alert">
+												<strong>Message: </strong> {{message}}
+												<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+											  </div>
+											{% endfor %}
+											{% endif %}
+      <p>
+        By clicking the Sign Up button,you agree to our <br />
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+      </p>
+    </div>
+    <p class="para-2">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+  </body>
+</html>
